@@ -1,0 +1,23 @@
+<h1>Recipe Box</h1>
+
+<h5>Add Recipe:</h5>
+
+<form action:"/" method="post">
+  <div class="form-group">
+    <input name="recipe_name" class="form-contol" type="text" placeholder="Recipe goes here">
+    <br><br>
+    <button class="btn btn-success" value="submit">Add Recipe!</button>
+  </div>
+</form>
+
+<hr>
+
+<% if @recipes.any?() %>
+  <% @recipes.each() do |recipe| %>
+  <ul>
+    <li><a href="/recipe/<%= recipe.id() %>"><%= recipe.name() %></a></li>
+  </ul>
+  <% end %>
+<% else %>
+  <p>You have no recipes!</p>
+<% end %>

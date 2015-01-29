@@ -24,12 +24,12 @@ ActiveRecord::Schema.define(version: 20150129181201) do
 
   create_table "categories_recipes", force: :cascade do |t|
     t.integer  "recipe_id"
-    t.integer  "ingredient_id"
-    t.datetime "created_at",    null: false
-    t.datetime "updated_at",    null: false
+    t.integer  "category_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
   end
 
-  add_index "categories_recipes", ["ingredient_id"], name: "index_categories_recipes_on_ingredient_id", using: :btree
+  add_index "categories_recipes", ["category_id"], name: "index_categories_recipes_on_category_id", using: :btree
   add_index "categories_recipes", ["recipe_id"], name: "index_categories_recipes_on_recipe_id", using: :btree
 
   create_table "ingredients", force: :cascade do |t|

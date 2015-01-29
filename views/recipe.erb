@@ -1,0 +1,28 @@
+<h1><%= @recipe.name() %></h1>
+
+<% if @recipe.instructions().nil?() %>
+  <form action="/recipe/<%= @recipe.id() %>" method="post">
+    <div class="form-group">
+      <input name="recipe_instructions" class="form-control" type="text" placeholder="Instructions" required>
+      <br>
+      <button class="btn btn-success" value="submit">Add Instructions</button>
+    </div>
+  </form>
+
+<% else %>
+  <form action="/recipe/<%= @recipe.id() %>" method="post">
+    <input name="_method" type="hidden" value="patch">
+    <div class="form-group">
+      <input name="new_instructions" class="form-control" type="text" placeholder="Change recipe instructions" required>
+      <br>
+      <button class="btn btn-success" value="submit">Change instructions!</button>
+    </div>
+  </form>
+
+  <h4>Instructions:</h4>
+  <br>
+  <p><%= @recipe.instructions() %></p>
+<% end %>
+
+<br><br>
+<a href="/">Back to Recipe Box</a>
