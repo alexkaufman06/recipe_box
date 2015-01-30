@@ -18,11 +18,36 @@
       <button class="btn btn-success" value="submit">Change instructions!</button>
     </div>
   </form>
+<% end %>
 
-  <h4>Instructions:</h4>
-  <br>
-  <p><%= @recipe.instructions() %></p>
-<% end %> 
+<h4>Add Ingredients to Recipe:<h4>
+<form action="/recipe/ingredient/<%= @recipe.id() %>" method="post">
+  <div class="form-group">
+    <select class="form-control" name="ingredient_id">
+      <% Ingredient.all().each() do |ingredient| %>
+        <option value="<%= ingredient.id() %>"><%= ingredient.name %></option>
+      <% end %>
+    </select>
+  </div>
+  <button type="submit" class="btn btn-success">Add Ingredient!</button>
+</form>
 
-<br><br>
+<h4>Instructions:</h4>
+<p><%= @recipe.instructions() %></p>
+<hr>
+
+<h4>Ingredients:</h4>
+<% if @recipe.ingredients().any?() %>
+  <ul>
+  <% @recipe.ingredients().each() do |ingredient| %>
+    <li><%= ingredient.name() %></li>
+  <% end %>
+  </ul>
+<% else %>
+  <p>No ingredients added</p>
+<% end %>
+
+<hr>
+<a href="/ingredients">Add ingredients to your cupboard!</a>
+<br>
 <a href="/">Back to Recipe Box</a>

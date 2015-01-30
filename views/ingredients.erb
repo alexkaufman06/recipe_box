@@ -1,0 +1,24 @@
+<h1>List of ingredients in cupboard</h1>
+
+<form action:"/ingredients" method="post">
+  <div class="form-group">
+    <input name="ingredient_name" class="form-contol" type="text" placeholder="Ingredient goes here" required>
+    <br><br>
+    <button class="btn btn-success" value="submit">Add Ingredient!</button>
+  </div>
+</form>
+
+<% if @ingredients.any?() %>
+  <% @ingredients.each() do |ingredient| %>
+  <ul>
+    <li>
+      <%= ingredient.name() %>
+      <a href="/ingredients/delete/<%= ingredient.id() %>"><em>Delete Ingredient</em></a>
+    </li>
+  </ul>
+  <% end %>
+<% else %>
+  <p>You have no ingredients!</p>
+<% end %>
+
+<a href="/../">Go back!</a>

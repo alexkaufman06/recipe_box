@@ -15,7 +15,10 @@
 <% if @recipes.any?() %>
   <% @recipes.each() do |recipe| %>
   <ul>
-    <li><a href="/recipe/<%= recipe.id() %>"><%= recipe.name() %></a></li>
+    <li>
+      <a href="/recipe/<%= recipe.id() %>"><%= recipe.name() %></a>
+      <a href="/recipe/delete/<%= recipe.id() %>"><em>Delete Recipe</em></a>
+    </li>
   </ul>
   <% end %>
 <% else %>
