@@ -30,7 +30,7 @@ post('/recipe/ingredient/:id') do
   @recipe = Recipe.find(params.fetch("id").to_i())
   ingredient_id = params.fetch("ingredient_id")
   ingredient = Ingredient.find(ingredient_id)
-  @recipe.ingredients().push(ingredient)
+  @recipe.ingredients().push(ingredient) 
   url = "/recipe/" + params.fetch('id')
   redirect(url)
 end
