@@ -2,14 +2,14 @@
 
 <h5>Add Recipe:</h5>
 
-<form action:"/" method="post">
+<form action="/" method="post">
   <div class="form-group">
     <input name="recipe_name" class="form-contol" type="text" placeholder="Recipe goes here">
     <br><br>
     <button class="btn btn-success" value="submit">Add Recipe!</button>
   </div>
 </form>
-
+<%= erb(:errors, :locals => { :object => @recipe }) %>
 <hr>
 
 <% if @recipes.any? %>

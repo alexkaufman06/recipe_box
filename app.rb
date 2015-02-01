@@ -4,13 +4,15 @@ Dir[File.dirname(__FILE__) + "/lib/*.rb"].each { |file| require file }
 
 get '/' do
   @recipes = Recipe.all
+  @recipe = Recipe.new
   erb :index
 end
 
 post '/' do
+  @recipes = Recipe.all
   recipe_name = params.fetch("recipe_name")
-  Recipe.create(:name => recipe_name)
-  redirect '/'
+  @recipe = Recipe.create(:name => recipe_name)
+  erb :index
 end
 
 get '/recipe/:id' do
