@@ -7,7 +7,7 @@ describe(Recipe) do
 
   it("capitalizes the recipe name before initializaion") do
     test_recipe = Recipe.create({:name => "quiche"})
-    expect(test_recipe.name()).to(eq("Quiche"))
+    expect(test_recipe.name).to(eq("Quiche"))
     # Above is a spec for a 'callback'
   end
 
