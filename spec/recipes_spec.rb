@@ -13,7 +13,7 @@ describe(Recipe) do
 
   it("validates the presence of a name") do
     test_recipe = Recipe.new({:name => ""})
-    expect(test_recipe.save()).to(eq(false))
+    expect(test_recipe.save).to(eq(false))
     # Above is a spec for a 'validation'
   end
 end
