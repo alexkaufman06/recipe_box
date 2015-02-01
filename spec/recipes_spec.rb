@@ -6,13 +6,13 @@ describe(Recipe) do
   # The above two lines are specs for 'associations'
 
   it("capitalizes the recipe name before initializaion") do
-    test_recipe = Recipe.create({:name => "quiche"})
+    test_recipe = Recipe.create(:name => "quiche")
     expect(test_recipe.name).to(eq("Quiche"))
     # Above is a spec for a 'callback'
   end
 
   it("validates the presence of a name") do
-    test_recipe = Recipe.new({:name => ""})
+    test_recipe = Recipe.new(:name => "")
     expect(test_recipe.save).to(eq(false))
     # Above is a spec for a 'validation'
   end

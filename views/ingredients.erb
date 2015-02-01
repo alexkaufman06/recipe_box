@@ -8,12 +8,12 @@
   </div>
 </form>
 
-<% if @ingredients.any?() %>
-  <% @ingredients.each() do |ingredient| %>
+<% if @ingredients.any? %>
+  <% @ingredients.each do |ingredient| %>
   <ul>
     <li>
-      <%= ingredient.name() %>
-      <a href="/ingredients/delete/<%= ingredient.id() %>"><em>Delete Ingredient</em></a>
+      <%= ingredient.name %>
+      <a href="/ingredients/delete/<%= ingredient.id %>"><em>Delete Ingredient</em></a>
     </li>
   </ul>
   <% end %>
