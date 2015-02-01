@@ -2,67 +2,67 @@ require("bundler/setup")
 Bundler.require(:default)
 Dir[File.dirname(__FILE__) + "/lib/*.rb"].each { |file| require file }
 
-get('/') do
-  @recipes = Recipe.all()
-  erb(:index)
+get '/' do
+  @recipes = Recipe.all
+  erb :index
 end
 
-post('/') do
+post '/' do
   recipe_name = params.fetch("recipe_name")
-  Recipe.create({:name => recipe_name})
-  redirect('/')
+  Recipe.create(:name => recipe_name)
+  redirect '/'
 end
 
-get('/recipe/:id') do
-  @recipe = Recipe.find(params.fetch("id").to_i())
-  @recipes = Recipe.all()
-  erb(:recipe)
+get '/recipe/:id' do
+  @recipe = Recipe.find(params.fetch("id").to_i)
+  @recipes = Recipe.all
+  erb :recipe
 end
 
-post('/recipe/:id') do
-  @recipe = Recipe.find(params.fetch("id").to_i())
+post '/recipe/:id' do
+  @recipe = Recipe.find(params.fetch("id").to_i)
   recipe_instructions = params.fetch("recipe_instructions")
-  @recipe.update({:instructions => recipe_instructions})
-  erb(:recipe)
+  @recipe.update(:instructions => recipe_instructions)
+  erb :recipe
 end
 
-post('/recipe/ingredient/:id') do
-  @recipe = Recipe.find(params.fetch("id").to_i())
+post '/recipe/ingredient/:id' do
+  @recipe = Recipe.find(params.fetch("id").to_i)
   ingredient_id = params.fetch("ingredient_id")
   ingredient = Ingredient.find(ingredient_id)
-  @recipe.ingredients().push(ingredient)
+  @recipe.ingredients.push(ingredient)
   url = "/recipe/" + params.fetch('id')
-  redirect(url)
+  redirect url
 end
 
-patch('/recipe/:id') do
-  @recipes = Recipe.all()
-  @recipe = Recipe.find(params.fetch("id").to_i())
+patch '/recipe/:id' do
+  @recipes = Recipe.all
+  @recipe = Recipe.find(params.fetch("id").to_i)
   new_instructions = params.fetch("new_instructions")
-  @recipe.update({:instructions => new_instructions})
-  erb(:recipe) 
+  @recipe.update(:instructions => new_instructions)
+  erb :recipe
 end
 
-get("/recipe/delete/:id") do
-  to_destroy_recipe = Recipe.find(params.fetch('id').to_i())
-  to_destroy_recipe.destroy()
-  @recipes = Recipe.all()
-  redirect('/')
+get "/recipe/delete/:id" do
+  to_destroy_recipe = Recipe.find(params.fetch('id').to_i)
+  to_destroy_recipe.destroy
+  @recipes = Recipe.all
+  redirect '/'
 end
 
-get("/ingredients") do
-  @ingredients = Ingredient.all()
-  erb(:ingredients)
+get "/ingredients" do
+  @ingredients = Ingredient.all
+  erb :ingredients
 end
 
-post("/ingredients") do
+post "/ingredients" do
   ingredient_name = params.fetch('ingredient_name')
-  Ingredient.create({ :name => ingredient_name })
-  redirect('/ingredients')
+  Ingredient.create(:name => ingredient_name)
+  redirect '/ingredients'
 end
 
-get("/ingredients/delete/:id") do
-  to_destroy_ingredient = Ingredient.find(params.fetch('id').to_i())
-  to_destroy_ingredient.destroy()
-  redirect('/ingredients')
+get "/ingredients/delete/:id" do
+  to_destroy_ingredient = Ingredient.find(params.fetch('id').to_i)
+  to_destroy_ingredient.destroy
+  redirect '/ingredients'
 end
