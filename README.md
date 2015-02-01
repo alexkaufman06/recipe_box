@@ -33,5 +33,5 @@ $ rake db:test:prepare
 ### Bug Reports
 If the user clicks add ingredient when no ingredients are in the cupbaord, the site will break.
 ### Author
-Alex Kaufman
+Alex Kaufman & Tyler Brown
 #### MIT License
