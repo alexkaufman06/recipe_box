@@ -1,7 +1,7 @@
-<h1><%= @recipe.name() %></h1>
+<h1><%= @recipe.name %></h1>
 
-<% if @recipe.instructions().nil?() %>
-  <form action="/recipe/<%= @recipe.id() %>" method="post">
+<% if @recipe.instructions.nil? %>
+  <form action="/recipe/<%= @recipe.id %>" method="post">
     <div class="form-group">
       <input name="recipe_instructions" class="form-control" type="text" placeholder="Instructions" required>
       <br>
@@ -18,7 +18,7 @@
       <button class="btn btn-success" value="submit">Change instructions!</button>
     </div>
   </form>
-<% end %> 
+<% end %>
 
 <h4>Add Ingredients to Recipe:<h4>
 <form action="/recipe/ingredient/<%= @recipe.id() %>" method="post">
