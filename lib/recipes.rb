@@ -10,6 +10,6 @@ class Recipe < ActiveRecord::Base
   private
 
     define_method(:capitalize_name) do
-      self.name=(name().capitalize())
+      self.name=(name.capitalize)
     end
 end

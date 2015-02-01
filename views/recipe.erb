@@ -10,7 +10,7 @@
   </form>
 
 <% else %>
-  <form action="/recipe/<%= @recipe.id() %>" method="post">
+  <form action="/recipe/<%= @recipe.id %>" method="post">
     <input name="_method" type="hidden" value="patch">
     <div class="form-group">
       <input name="new_instructions" class="form-control" type="text" placeholder="Change recipe instructions" required>
@@ -21,11 +21,11 @@
 <% end %>
 
 <h4>Add Ingredients to Recipe:<h4>
-<form action="/recipe/ingredient/<%= @recipe.id() %>" method="post">
+<form action="/recipe/ingredient/<%= @recipe.id %>" method="post">
   <div class="form-group">
     <select class="form-control" name="ingredient_id">
-      <% Ingredient.all().each() do |ingredient| %>
-        <option value="<%= ingredient.id() %>"><%= ingredient.name %></option>
+      <% Ingredient.all.each do |ingredient| %>
+        <option value="<%= ingredient.id %>"><%= ingredient.name %></option>
       <% end %>
     </select>
   </div>
@@ -33,14 +33,14 @@
 </form>
 
 <h4>Instructions:</h4>
-<p><%= @recipe.instructions() %></p>
+<p><%= @recipe.instructions %></p>
 <hr>
 
 <h4>Ingredients:</h4>
-<% if @recipe.ingredients().any?() %>
+<% if @recipe.ingredients.any? %>
   <ul>
-  <% @recipe.ingredients().each() do |ingredient| %>
-    <li><%= ingredient.name() %></li>
+  <% @recipe.ingredients.each do |ingredient| %>
+    <li><%= ingredient.name %></li>
   <% end %>
   </ul>
 <% else %>
